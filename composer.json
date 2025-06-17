@@ -1,10 +1,10 @@
 {
-    "name": "your-username-here/project-name-here",
+    "name": "tianjose09/ad-meeting-calendar",
     "type": "project",
     "authors": [
         {
-            "name": "your-username-here",
-            "email": "your-email-here@gmail.com"
+            "name": "Khristian Jose Guinto",
+            "email": "khristianjosedp@gmail.com"
         }
     ],
     "scripts": {
