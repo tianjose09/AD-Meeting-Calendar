@@ -1,10 +1,11 @@
 <?php
+require_once __DIR__ . '/../utils/envSetter.util.php';
 
-$host = "host.docker.internal"; 
-$port = "5112";
-$username = "user";
-$password = "password";
-$dbname = "guintodatabase";
+$host = $typeConfig['pg_host'];
+$port = $typeConfig['pg_port'];
+$username = $typeConfig['pg_user'];
+$password = $typeConfig['pg_pass'];
+$dbname = $typeConfig['pg_db'];
 
 $conn_string = "host=$host port=$port dbname=$dbname user=$username password=$password";
 
