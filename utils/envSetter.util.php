@@ -32,3 +32,11 @@ $typeConfig = [
     'mongo_uri'  => $_ENV['MONGO_URI'],
     'mongo_db'   => $_ENV['MONGO_DB'],
 ];
+
+$pgConfig = [
+    'host' => $typeConfig['pg_host'],
+    'port' => $typeConfig['pg_port'],
+    'db'   => $typeConfig['pg_db'],
+    'user' => $typeConfig['pg_user'],
+    'pass' => $typeConfig['pg_pass'],
+];
