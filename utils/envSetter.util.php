@@ -9,6 +9,7 @@ if (!file_exists($envPath)) {
     die("❌ .env file not found at: $envPath");
 }
 
+
 $requiredKeys = ['PG_HOST', 'PG_PORT', 'PG_DB', 'PG_USER', 'PG_PASS', 'MONGO_URI', 'MONGO_DB'];
 foreach ($requiredKeys as $key) {
     if (!isset($_ENV[$key])) {

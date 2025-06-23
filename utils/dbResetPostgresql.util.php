@@ -21,8 +21,8 @@ echo "✅ Connected to PostgreSQL via PDO\n";
 // ——— Apply All Schemas First ———
 $schemas = [
   'user.model.sql',
-  'project.model.sql',
-  'project_user.model.sql',
+  'meeting.model.sql',
+  'meeting_user.model.sql',
   'tasks.model.sql',
 ];
 
@@ -40,7 +40,7 @@ foreach ($schemas as $file) {
 // ——— Then Truncate the Tables ———
 echo "🧹 Truncating tables…\n";
 // Truncate in FK-safe order (child to parent)
-foreach (['project_users', 'tasks', 'projects', 'users'] as $table) {
+foreach (['meeting_users', 'tasks', 'meeting', 'users'] as $table) {
   $pdo->exec("TRUNCATE TABLE {$table} RESTART IDENTITY CASCADE;");
 }
 echo "✅ Tables truncated successfully.\n";
