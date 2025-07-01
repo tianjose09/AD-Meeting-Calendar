@@ -21,7 +21,7 @@ services:
       - postgresql 
   mongodb:
     image: mongo:latest
-    container_name: activity3-MONGO_INITDB_DATABASE
+    container_name: activity3-mongodb
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: rootPassword
@@ -33,7 +33,7 @@ services:
 
   postgresql:
     image: postgres:15
-    container_name: activity3-POSTGRES_DB
+    container_name: activity3-postgresql
     restart: always
     environment:
       POSTGRES_USER: user
