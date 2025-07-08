@@ -1,25 +1,27 @@
 <?php
+require_once UTILS_PATH . '/envSetter.util.php';
 
-class DBConnection
-{
+class DBConnection {
     private static $pdo;
 
-    public static function getConnection()
-    {
-        if (!self::$pdo) {
-            $host = 'localhost';
-            $db   = 'your_database';
-            $user = 'your_user';
-            $pass = 'your_password';
-            $charset = 'utf8mb4';
+    public static function getConnection() {
+        global $pgConfig;
 
-            $dsn = "pgsql:host=$host;dbname=$db;options='--client_encoding=$charset'";
+        if (!self::$pdo) {
+            $host = $pgConfig['host'];
+            $port = $pgConfig['port'];
+            $db   = $pgConfig['db'];
+            $user = $pgConfig['user'];
+            $pass = $pgConfig['pass'];
+
+            $dsn = "pgsql:host=$host;port=$port;dbname=$db";
+
             try {
                 self::$pdo = new PDO($dsn, $user, $pass, [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
                 ]);
             } catch (PDOException $e) {
-                die('DB Connection failed: ' . $e->getMessage());
+                die("❌ DB Connection failed: " . $e->getMessage());
             }
         }
 

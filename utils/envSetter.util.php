@@ -1,6 +1,8 @@
 <?php
-require_once BASE_PATH . '/vendor/autoload.php';
 
+require_once VENDOR_PATH . '/autoload.php';
+
+// ✅ Load .env from BASE_PATH
 $dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
 $dotenv->load();
 
@@ -9,7 +11,7 @@ if (!file_exists($envPath)) {
     die("❌ .env file not found at: $envPath");
 }
 
-
+// ✅ Check required environment keys
 $requiredKeys = ['PG_HOST', 'PG_PORT', 'PG_DB', 'PG_USER', 'PG_PASS', 'MONGO_URI', 'MONGO_DB'];
 foreach ($requiredKeys as $key) {
     if (!isset($_ENV[$key])) {
@@ -17,6 +19,7 @@ foreach ($requiredKeys as $key) {
     }
 }
 
+// ✅ Store parsed ENV values
 $typeConfig = [
     'env_name'   => $_ENV['ENV_guinto'] ?? 'local',
 
@@ -30,6 +33,8 @@ $typeConfig = [
     'mongo_db'   => $_ENV['MONGO_DB'],
 ];
 
+// ✅ Expose PG config globally for other files (e.g., DBConnection)
+global $pgConfig;
 $pgConfig = [
     'host' => $typeConfig['pg_host'],
     'port' => $typeConfig['pg_port'],
